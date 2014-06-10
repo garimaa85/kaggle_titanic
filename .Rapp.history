@@ -1,0 +1,766 @@
+read.csv( "/Users/tusharporwal/kaggle_titanic/train.csv",sep="", header= T)
+read.table( "/Users/tusharporwal/kaggle_titanic/train.csv",sep="", header= T)
+?read.csv
+read.table( "/Users/tusharporwal/kaggle_titanic/train.csv",, header= T, sep="")
+read.table( "/Users/tusharporwal/kaggle_titanic/train.csv", header= T, sep="")
+train.raw <- read.csv("/Users/tusharporwal/kaggle_titanic/train.csv", header = TRUE, stringsAsFactors = FALSE)
+test.raw <- read.csv("/Users/tusharporwal/kaggle_titanic/test.csv", header = TRUE, stringsAsFactors = FALSE)
+barplot(table(df.train$Survived),#
+        names.arg = c("Perished", "Survived"),#
+        main="Survived (passenger fate)", col="red")
+barplot(table(train.raw$Survived),#
+        names.arg = c("Perished", "Survived"),#
+        main="Survived (passenger fate)", col="red")
+require(Amelia)
+require(RCurl)
+require(Amelia)#
+missmap(train.raw, main="Titanic Training Data - Missings Map", #
+        col=c("yellow", "black"), legend=FALSE)
+mosaicplot(train.raw$Pclass ~ train.raw$Survived, #
+           main="Passenger Fate by Traveling Class", shade=FALSE, #
+           color=TRUE, xlab="Pclass", ylab="Survived")
+mosaicplot(train.raw$Sex ~ train.raw$Survived, #
+           main="Passenger Fate by Traveling Gender", shade=FALSE, #
+           color=TRUE, xlab="Sex", ylab="Survived")
+boxplot(train.raw$Age ~ train.raw$Survived, #
+        main="Passenger Fate by Age",#
+        xlab="Survived", ylab="Age")
+mosaicplot(train.raw$Embarked ~ train.raw$Survived, #
+           main="Passenger Fate by Traveling Gender", shade=FALSE, #
+           color=TRUE, xlab="Embarked", ylab="Survived")
+summary(tran.raw$Age)
+summary(train.raw$Age)
+install.package("Corrgram")
+install.packages("Corrgram")
+require(corrgram)
+names(train.raw)
+head(train.raw$Name, n=10L)
+getTitle <- function(data){ title.dot.start <- regexpr("\\,[A-Z ]{1,20}\\.", data$Name, TRUE)#
+  title.comma.end <- title.dot.start #
+                     + attr(title.dot.start, "match.length")-1#
+  data$Title <- substr(data$Name, title.dot.start+2, title.comma.end-1)#
+  return (data$Title)#
+}
+df.train$Title <- getTitle(train.raw)
+train.raw$Title <- getTitle(train.raw)
+unique(train.raw$Title)
+train.raw$Title
+getTitle <- function(data){ title.dot.start <- regexpr("\\,[A-Z ]{1,20}\\.", train.raw$Name, TRUE)#
+  title.comma.end <- title.dot.start #
+                     + attr(title.dot.start, "match.length")-1#
+  train.raw$Title <- substr(train.raw$Name, title.dot.start+2, title.comma.end-1)#
+  return (train.raw$Title)#
+}
+train.raw$Title <- getTitle(train.raw)
+unique(train.raw$Title)
+getTitle <- function(train.raw){ title.dot.start <- regexpr("\\,[A-Z ]{1,20}\\.", train.raw$Name, TRUE)#
+  title.comma.end <- title.dot.start #
+                     + attr(title.dot.start, "match.length")-1#
+  train.raw$Title <- substr(train.raw$Name, title.dot.start+2, title.comma.end-1)#
+  return (train.raw$Title)#
+}
+unique(train.raw$Title)
+train.raw$Title <- getTitle(train.raw)
+unique(train.raw$Title)
+getTitle <- function(train.raw){ title.dot.start <- regexpr("\\,[A-Z ]{1,20}\\.", train.raw$Name, TRUE)#
+  title.comma.end <- title.dot.start #
+                     + attr(title.dot.start, "match.length")-1#
+  train.raw$Title <- substr(train.raw$Name, title.dot.start+2, title.comma.end-1)#
+  return (train.raw$Title)#
+}
+head(train.raw$Name, n=10L)
+getTitle <- function(data) {#
+  title.dot.start <- regexpr("\\,[A-Z ]{1,20}\\.", data$Name, TRUE)#
+  title.comma.end <- title.dot.start #
+                     + attr(title.dot.start, "match.length")-1#
+  data$Title <- substr(data$Name, title.dot.start+2, title.comma.end-1)#
+  return (data$Title)#
+}
+train.raw$Title <- getTitle(train.raw)
+unique(train.raw)
+unique(train.raw$Title)
+head(train.raw$Name, n=10L)
+getTitle <- function(data) {#
+  title.dot.start <- grep("\\,[A-Z ]{1,20}\\.", data$Name, TRUE)#
+  title.comma.end <- title.dot.start #
+                     + attr(title.dot.start, "match.length")-1#
+  data$Title <- substr(data$Name, title.dot.start+2, title.comma.end-1)#
+  return (data$Title)#
+}
+df.train$Title <- getTitle(train.raw)
+train.raw$Title <- getTitle(train.raw)
+getTitle <- function(data) {#
+  title.dot.start <- regexpe("\\,[A-Z ]{1,20}\\.", data$Name, TRUE)#
+  title.comma.end <- title.dot.start #
+                     + attr(title.dot.start, "match.length")-1#
+  data$Title <- substr(data$Name, title.dot.start+2, title.comma.end-1)#
+  return (data$Title)#
+}
+train.raw$Title <- getTitle(train.raw)
+getTitle <- function(data) {#
+  title.dot.start <- regexpr("\\,[A-Z ]{1,20}\\.", data$Name, TRUE)#
+  title.comma.end <- title.dot.start #
+                     + attr(title.dot.start, "match.length")-1#
+  data$Title <- substr(data$Name, title.dot.start+2, title.comma.end-1)#
+  return (data$Title)#
+}
+train.raw$Title <- getTitle(train.raw)
+train.raw$Title
+?regexpr
+getTitle <- function(data) {#
+  title.dot.start <- regexpr("\\,[A-Z ]{1,20}\\.", data$Name, per=TRUE)#
+  title.comma.end <- title.dot.start #
+                     + attr(title.dot.start, "match.length")-1#
+  data$Title <- substr(data$Name, title.dot.start+2, title.comma.end-1)#
+  return (data$Title)#
+}
+train.raw$Title <- getTitle(train.raw)
+unique(train.raw$Title)
+getTitle <- function(data) {#
+  title.dot.start <- regexpr("\\,[A-Z ]{1,20}\\", data$Name, per=TRUE)#
+  title.comma.end <- title.dot.start #
+                     + attr(title.dot.start, "match.length")-1#
+  data$Title <- substr(data$Name, title.dot.start+1, title.comma.end-1)#
+  return (data$Title)#
+}
+train.raw$Title <- getTitle(train.raw)
+getTitle <- function(data) {#
+  title.dot.start <- regexpr("\\,[A-Z ]{1,20}\\.", data$Name, per=TRUE)#
+  title.comma.end <- title.dot.start #
+                     + attr(title.dot.start, "match.length")-1#
+  data$Title <- substr(data$Name, title.dot.start+1, title.comma.end-1)#
+  return (data$Title)#
+}
+train.raw$Title <- getTitle(train.raw)
+unique(train.raw$Title)
+train.raw$Title
+getTitle <- function(train.raw$Names) {#
+  title.dot.start <- regexpr("\\,[A-Z ]{1,20}\\.", train.raw$Names, per=TRUE)#
+  title.comma.end <- title.dot.start #
+                     + attr(title.dot.start, "match.length")-1#
+  data$Title <- substr(train.raw$Names, title.dot.start+1, title.comma.end-1)#
+  return (train.raw$Title)#
+}
+getTitle <- function(data) {#
+  title.dot.start <- regexpr("\\,[A-Z ]{1,20}\\.", train.raw$Names, per=TRUE)#
+  title.comma.end <- title.dot.start #
+                     + attr(title.dot.start, "match.length")-1#
+  data$Title <- substr(train.raw$Names, title.dot.start+1, title.comma.end-1)#
+  return (train.raw$Title)#
+}
+getTitle <- function(data) {#
+  title.dot.start <- regexpr("\\,[A-Z ]{1,20}\\.", train.raw$Names, per=TRUE)#
+  title.comma.end <- title.dot.start #
+                     + attr(title.dot.start, "match.length")-1#
+  data$Title <- substr(train.raw$Names, title.dot.start+1, title.comma.end-1)#
+  return (data$Title)#
+}
+train.raw$Title <- getTitle(train.raw)
+getTitle <- function(data) {#
+  title.dot.start <- regexpr("\\,[A-Z ]{1,20}\\.", data$Name, TRUE)#
+  title.comma.end <- title.dot.start #
+                     + attr(title.dot.start, "match.length")-1#
+  data$Title <- substr(data$Name, title.dot.start+2, title.comma.end-1)#
+  return (data$Title)#
+}
+train.raw$Names
+head(df.train$Name, n=10L)
+head(train.raw$Name, n=10L)
+summary(train.raw)
+head(train.raw$Name, n=10L)
+train.raw$Name <- as.character(combi$Name)
+train.raw$Name <- as.character(train.raw$Name)
+train.raw$Name[1]
+strsplit(train.raw$Name[1], split='[,.]')
+strsplit(train.raw$Name[1], split='[,.]')[[1]]
+strsplit(train.raw$Name[1], split='[,.]')[[1]][2]
+train.raw$Title <- sapply(train.raw$Name, FUN=function(x) {strsplit(x, split='[,.]')[[1]][2]})
+train.raw$Title <- sub(' ', '', train.raw$Title)
+table(train.raw$Title)
+install.packages(Hmisc)
+install.packages(Hmisc package)
+install.packages("Hmisc")
+options(digits=2)#
+require(Hmisc)#
+bystats(train.raw$Age, train.rawTitle, #
+        fun=function(x)c(Mean=mean(x),Median=median(x)))
+require(Hmisc)
+options(digits=2)
+bystats(df.train$Age, df.train$Title, #
+        fun=function(x)c(Mean=mean(x),Median=median(x)))
+bystats(train.raw$Age, train.raw$Title, #
+        fun=function(x)c(Mean=mean(x),Median=median(x)))
+titles.na.train <- c("Dr", "Master", "Mrs", "Miss", "Mr")
+imputeMedian <- function(impute.var, filter.var, var.levels) {#
+  for (v in var.levels) {#
+    impute.var[ which( filter.var == v)] <- impute(impute.var[ #
+      which( filter.var == v)])#
+  }#
+  return (impute.var)#
+}
+train.raw$Age[which(train.raw$Title=="Dr")]
+train.raw$Age <- imputeMedian(train.raw$Age, train.raw$Title, #
+                             titles.na.train)
+train.raw$Age[which(train.raw$Title=="Dr")]
+summary(train.raw$Age)
+summary(train.raw$Embarked)
+train.raw$Embarked[which(is.na(train.raw$Embarked))] <- 'S'
+summary(train.raw$Fare)
+train.raw$Fare[which(train.raw$Fare== 0)] <- NA
+train.raw$Fare<- imputeMedian(train.raw$Fare, train.raw$Pclass, as.numeric(levels(df.train$Pclass))
+)
+train.raw$Fare<- imputeMedian(train.raw$Fare, train.raw$Pclass, as.numeric(levels(train.raw$Pclass))
+)
+train.raw$Title <- factor(train.raw$Title,#
+                         c("Capt","Col","Major","Sir","Lady","Rev",#
+                         "Dr","Don","Jonkheer","the Countess","Mrs",#
+                         "Ms","Mr","Mme","Mlle","Miss","Master"))#
+boxplot(train.raw$Age ~ train.raw$Title, #
+        main="Passenger Age by Title", xlab="Title", ylab="Age")
+changeTitles <- function(data, old.titles, new.title) {#
+  for (honorific in old.titles) {#
+    data$Title[ which( data$Title == honorific)] <- new.title#
+  }#
+  return (data$Title)#
+}
+train.raw$Title <- changeTitles(train.raw, #
+                               c("Capt", "Col", "Don", "Dr", #
+                               "Jonkheer", "Lady", "Major", #
+                               "Rev", "Sir"),#
+                               "Noble")#
+train.raw$Title <- changeTitles(train.raw, c("the Countess", "Ms"), #
+                               "Mrs")#
+train.raw$Title <- changeTitles(train.raw, c("Mlle", "Mme"), "Miss")#
+train.raw$Title <- as.factor(train.raw$Title)
+changeTitles <- function(data, old.titles, new.title) {#
+  for (honorific in old.titles) {#
+    data$Title[ which( data$Title == honorific)] <- new.title#
+  }#
+  return (data$Title)#
+}
+train.raw$Title <- changeTitles(train.raw, #
+                               c("Capt", "Col", "Don", "Dr", #
+                               "Jonkheer", "Lady", "Major", #
+                               "Rev", "Sir"),#
+                               "Noble")#
+train.raw$Title <- changeTitles(train.raw, c("the Countess", "Ms"), #
+                               "Mrs")#
+train.raw$Title <- changeTitles(train.raw, c("Mlle", "Mme"), "Miss")#
+train.raw$Title <- as.factor(train.raw$Title)
+train.raw$Title[train.raw$Title%n% c('Mme', 'MLe')]<- Miss
+train.raw$Title[train.raw$Title%n% c('Mme', 'MLe')]<- 'Miss'
+train.raw$Title <- sub(' ', '', train.raw$Title)
+train.raw$Title[train.raw$Title %n% c('Mme', 'MLe')]<- 'Miss'
+train.raw$Title[train.raw$Title %in% c('Mme', 'MLe')]<- 'Miss'
+train.raw$Title[train.raw$Title %in% c("Capt", "Col", "Don", "Dr", #
+                               "Jonkheer", "Lady", "Major", #
+                               "Rev", "Sir")]<- 'Noble'
+train.raw$Title[train.raw$Title %in% c("the Countess", "Ms")]<- 'Mrs'
+train.raw$Title <- as.factor(train.raw$Title)
+install.packages("plyr")
+install.packages("stringr")
+require(plyr)
+library(plyr)
+library(stringr)
+require(plyr)
+require(stringr)
+isEven <- function(x) x %in% c("0","2","4","6","8")
+isOdd <- function(x) x %in% c("1","3","5","7","9")
+featureEngrg <- function(data) {data$Fate <- data$Survived data$Fate <- revalue(data$Fate, c("1" = "Survived", "0" = "Perished"))
+featureEngrg <- function(data) {data$Fate <- data$Survived data$Fate <- revalue(data$Fate, c("1" = "Survived", "0" = "Perished")) data$Boat.dibs <- "No"#
+  data$Boat.dibs[which(data$Sex == "female" | data$Age < 15)] <- "Yes"#
+  data$Boat.dibs <- as.factor(data$Boat.dibs) data$Family <- data$SibSp + data$Parch data$Fare.pp <- data$Fare/(data$Family + 1)
+featureEngrg <- function(data) {data$Fate <- data$Survived data$Fate <- revalue(data$Fate, c("1" = "Survived", "0" = "Perished")) data$Boat.dibs <- "No"#
+  data$Boat.dibs[which(data$Sex == "female" | data$Age < 15)] <- "Yes"#
+  data$Boat.dibs <- as.factor(data$Boat.dibs) data$Family <- data$SibSp + data$Parch data$Fare.pp <- data$Fare/(data$Family + 1) data$Class <- data$Pclass#
+  data$Class <- revalue(data$Class, #
+                        c("1"="First", "2"="Second", "3"="Third")) data$Deck <- substring(data$Cabin, 1, 1)#
+  data$Deck[ which( is.na(data$Deck ))] <- "UNK"#
+  data$Deck <- as.factor(data$Deck)#
+  ## Odd-numbered cabins were reportedly on the port side of the ship#
+  ## Even-numbered cabins assigned Side="starboard"#
+  data$cabin.last.digit <- str_sub(data$Cabin, -1)#
+  data$Side <- "UNK"#
+  data$Side[which(isEven(data$cabin.last.digit))] <- "port"#
+  data$Side[which(isOdd(data$cabin.last.digit))] <- "starboard"#
+  data$Side <- as.factor(data$Side)#
+  data$cabin.last.digit <- NULL#
+  return (data)#
+}
+isEven <- function(x) x %in% c("0","2","4","6","8") #
+## test a character as an ODD single digit#
+isOdd <- function(x) x %in% c("1","3","5","7","9") #
+#
+## function to add features to training or test data frames#
+featureEngrg <- function(data) {#
+  ## Using Fate ILO Survived because term is shorter and just sounds good#
+  data$Fate <- data$Survived#
+  ## Revaluing Fate factor to ease assessment of confusion matrices later#
+  data$Fate <- revalue(data$Fate, c("1" = "Survived", "0" = "Perished"))#
+  ## Boat.dibs attempts to capture the "women and children first"#
+  ## policy in one feature.  Assuming all females plus males under 15#
+  ## got "dibs' on access to a lifeboat#
+  data$Boat.dibs <- "No"#
+  data$Boat.dibs[which(data$Sex == "female" | data$Age < 15)] <- "Yes"#
+  data$Boat.dibs <- as.factor(data$Boat.dibs)#
+  ## Family consolidates siblings and spouses (SibSp) plus#
+  ## parents and children (Parch) into one feature#
+  data$Family <- data$SibSp + data$Parch#
+  ## Fare.pp attempts to adjust group purchases by size of family#
+  data$Fare.pp <- data$Fare/(data$Family + 1)#
+  ## Giving the traveling class feature a new look#
+  data$Class <- data$Pclass#
+  data$Class <- revalue(data$Class, #
+                        c("1"="First", "2"="Second", "3"="Third"))#
+  ## First character in Cabin number represents the Deck #
+  data$Deck <- substring(data$Cabin, 1, 1)#
+  data$Deck[ which( is.na(data$Deck ))] <- "UNK"#
+  data$Deck <- as.factor(data$Deck)#
+  ## Odd-numbered cabins were reportedly on the port side of the ship#
+  ## Even-numbered cabins assigned Side="starboard"#
+  data$cabin.last.digit <- str_sub(data$Cabin, -1)#
+  data$Side <- "UNK"#
+  data$Side[which(isEven(data$cabin.last.digit))] <- "port"#
+  data$Side[which(isOdd(data$cabin.last.digit))] <- "starboard"#
+  data$Side <- as.factor(data$Side)#
+  data$cabin.last.digit <- NULL#
+  return (data)#
+}
+train.raw <- featureEngrg(train.raw)
+isEven <- function(x) x %in% c("0","2","4","6","8")
+isOdd <- function(x) x %in% c("1","3","5","7","9")
+featureEngrg <- function(data) {#
+  ## Using Fate ILO Survived because term is shorter and just sounds good#
+  data$Fate <- data$Survived#
+  ## Revaluing Fate factor to ease assessment of confusion matrices later#
+  data$Fate <- revalue(data$Fate, c("1" = "Survived", "0" = "Perished"))#
+  ## Boat.dibs attempts to capture the "women and children first"#
+  ## policy in one feature.  Assuming all females plus males under 15#
+  ## got "dibs' on access to a lifeboat#
+  data$Boat.dibs <- "No"#
+  data$Boat.dibs[which(data$Sex == "female" | data$Age < 15)] <- "Yes"#
+  data$Boat.dibs <- as.factor(data$Boat.dibs)#
+  ## Family consolidates siblings and spouses (SibSp) plus#
+  ## parents and children (Parch) into one feature#
+  data$Family <- data$SibSp + data$Parch#
+  ## Fare.pp attempts to adjust group purchases by size of family#
+  data$Fare.pp <- data$Fare/(data$Family + 1)#
+  ## Giving the traveling class feature a new look#
+  data$Class <- data$Pclass#
+  data$Class <- revalue(data$Class, #
+                        c("1"="First", "2"="Second", "3"="Third"))#
+  ## First character in Cabin number represents the Deck #
+  data$Deck <- substring(data$Cabin, 1, 1)#
+  data$Deck[ which( is.na(data$Deck ))] <- "UNK"#
+  data$Deck <- as.factor(data$Deck)#
+  ## Odd-numbered cabins were reportedly on the port side of the ship#
+  ## Even-numbered cabins assigned Side="starboard"#
+  data$cabin.last.digit <- str_sub(data$Cabin, -1)#
+  data$Side <- "UNK"#
+  data$Side[which(isEven(data$cabin.last.digit))] <- "port"#
+  data$Side[which(isOdd(data$cabin.last.digit))] <- "starboard"#
+  data$Side <- as.factor(data$Side)#
+  data$cabin.last.digit <- NULL#
+  return (data)#
+}
+train.raw <- featureEngrg(train.raw)
+featureEngrg <- function(data) {#
+  ## Using Fate ILO Survived because term is shorter and just sounds good#
+  data$Fate <- data$Survived#
+  ## Revaluing Fate factor to ease assessment of confusion matrices later#
+  data$Fate <- revalue(data$Fate, c("1" = "Survived", "0" = "Perished"))#
+  ## Boat.dibs attempts to capture the "women and children first"#
+  ## policy in one feature.  Assuming all females plus males under 15#
+  ## got "dibs' on access to a lifeboat#
+  data$Boat.dibs <- "No"#
+  data$Boat.dibs[which(data$Sex == "female" | data$Age < 15)] <- "Yes"#
+  data$Boat.dibs <- as.factor(data$Boat.dibs)#
+  ## Family consolidates siblings and spouses (SibSp) plus#
+  ## parents and children (Parch) into one feature#
+  data$Family <- data$SibSp + data$Parch#
+  ## Fare.pp attempts to adjust group purchases by size of family#
+  data$Fare.pp <- data$Fare/(data$Family + 1)#
+  ## Giving the traveling class feature a new look#
+  data$Class <- data$Pclass#
+  data$Class <- revalue(data$Class, #
+                        c("1"="First", "2"="Second", "3"="Third"))#
+  ## First character in Cabin number represents the Deck #
+  data$Deck <- substring(data$Cabin, 1, 1)#
+  data$Deck[ which( is.na(data$Deck ))] <- "UNK"#
+  data$Deck <- as.factor(data$Deck)#
+  ## Odd-numbered cabins were reportedly on the port side of the ship#
+  ## Even-numbered cabins assigned Side="starboard"#
+  data$cabin.last.digit <- str_sub(data$Cabin, -1)#
+  data$Side <- "UNK"#
+  data$Side[which(isEven(data$cabin.last.digit))] <- "port"#
+  data$Side[which(isOdd(data$cabin.last.digit))] <- "starboard"#
+  data$Side <- as.factor(data$Side)#
+  data$cabin.last.digit <- NULL#
+  return (data)#
+}
+featureEngrg <- function(data) {#
+  ## Using Fate ILO Survived because term is shorter and just sounds good#
+  data$Fate <- data$Survived#
+  ## Revaluing Fate factor to ease assessment of confusion matrices later#
+  data$Fate <- revalue(data$Fate, c("1" = "Survived", "0" = "Perished")) data$Fate <- as.factor(data$Fate)#
+  ## Boat.dibs attempts to capture the "women and children first"#
+  ## policy in one feature.  Assuming all females plus males under 15#
+  ## got "dibs' on access to a lifeboat#
+  data$Boat.dibs <- "No"#
+  data$Boat.dibs[which(data$Sex == "female" | data$Age < 15)] <- "Yes"#
+  data$Boat.dibs <- as.factor(data$Boat.dibs)#
+  ## Family consolidates siblings and spouses (SibSp) plus#
+  ## parents and children (Parch) into one feature#
+  data$Family <- data$SibSp + data$Parch#
+  ## Fare.pp attempts to adjust group purchases by size of family#
+  data$Fare.pp <- data$Fare/(data$Family + 1)#
+  ## Giving the traveling class feature a new look#
+  data$Class <- data$Pclass#
+  data$Class <- revalue(data$Class, #
+                        c("1"="First", "2"="Second", "3"="Third"))#
+  ## First character in Cabin number represents the Deck #
+  data$Deck <- substring(data$Cabin, 1, 1)#
+  data$Deck[ which( is.na(data$Deck ))] <- "UNK"#
+  data$Deck <- as.factor(data$Deck)#
+  ## Odd-numbered cabins were reportedly on the port side of the ship#
+  ## Even-numbered cabins assigned Side="starboard"#
+  data$cabin.last.digit <- str_sub(data$Cabin, -1)#
+  data$Side <- "UNK"#
+  data$Side[which(isEven(data$cabin.last.digit))] <- "port"#
+  data$Side[which(isOdd(data$cabin.last.digit))] <- "starboard"#
+  data$Side <- as.factor(data$Side)#
+  data$cabin.last.digit <- NULL#
+  return (data)#
+}
+featureEngrg <- function(data) {#
+  ## Using Fate ILO Survived because term is shorter and just sounds good#
+  data$Fate <- data$Survived#
+  ## Revaluing Fate factor to ease assessment of confusion matrices later#
+  data$Fate <- revalue(data$Fate, c("1" = "Survived", "0" = "Perished"))#
+  ## Boat.dibs attempts to capture the "women and children first"#
+  ## policy in one feature.  Assuming all females plus males under 15#
+  ## got "dibs' on access to a lifeboat#
+  data$Boat.dibs <- "No"#
+  data$Boat.dibs[which(data$Sex == "female" | data$Age < 15)] <- "Yes"#
+  data$Boat.dibs <- as.factor(data$Boat.dibs)#
+  ## Family consolidates siblings and spouses (SibSp) plus#
+  ## parents and children (Parch) into one feature#
+  data$Family <- data$SibSp + data$Parch#
+  ## Fare.pp attempts to adjust group purchases by size of family#
+  data$Fare.pp <- data$Fare/(data$Family + 1)#
+  ## Giving the traveling class feature a new look#
+  data$Class <- data$Pclass#
+  data$Class <- revalue(data$Class, #
+                        c("1"="First", "2"="Second", "3"="Third"))#
+  ## First character in Cabin number represents the Deck #
+  data$Deck <- substring(data$Cabin, 1, 1)#
+  data$Deck[ which( is.na(data$Deck ))] <- "UNK"#
+  data$Deck <- as.factor(data$Deck)#
+  ## Odd-numbered cabins were reportedly on the port side of the ship#
+  ## Even-numbered cabins assigned Side="starboard"#
+  data$cabin.last.digit <- str_sub(data$Cabin, -1)#
+  data$Side <- "UNK"#
+  data$Side[which(isEven(data$cabin.last.digit))] <- "port"#
+  data$Side[which(isOdd(data$cabin.last.digit))] <- "starboard"#
+  data$Side <- as.factor(data$Side)#
+  data$cabin.last.digit <- NULL#
+  return (data)#
+}
+train.raw <- featureEngrg(train.raw)
+isEven <- function(x) x %in% c("0","2","4","6","8")
+isOdd <- function(x) x %in% c("1","3","5","7","9")
+featureEngrg <- function(data) {#
+  ## Using Fate ILO Survived because term is shorter and just sounds good#
+  data$Fate <- data$Survived#
+  ## Revaluing Fate factor to ease assessment of confusion matrices later#
+  data$Fate <- revalue(data$Fate, c("1" = "Survived", "0" = "Perished"))#
+  ## Boat.dibs attempts to capture the "women and children first"#
+  ## policy in one feature.  Assuming all females plus males under 15#
+  ## got "dibs' on access to a lifeboat#
+  data$Boat.dibs <- "No"#
+  data$Boat.dibs[which(data$Sex == "female" | data$Age < 15)] <- "Yes"#
+  data$Boat.dibs <- as.factor(data$Boat.dibs)#
+  ## Family consolidates siblings and spouses (SibSp) plus#
+  ## parents and children (Parch) into one feature#
+  data$Family <- data$SibSp + data$Parch#
+  ## Fare.pp attempts to adjust group purchases by size of family#
+  data$Fare.pp <- data$Fare/(data$Family + 1)#
+  ## Giving the traveling class feature a new look#
+  data$Class <- data$Pclass#
+  data$Class <- revalue(data$Class, #
+                        c("1"="First", "2"="Second", "3"="Third"))#
+  ## First character in Cabin number represents the Deck #
+  data$Deck <- substring(data$Cabin, 1, 1)#
+  data$Deck[ which( is.na(data$Deck ))] <- "UNK"#
+  data$Deck <- as.factor(data$Deck)#
+  ## Odd-numbered cabins were reportedly on the port side of the ship#
+  ## Even-numbered cabins assigned Side="starboard"#
+  data$cabin.last.digit <- str_sub(data$Cabin, -1)#
+  data$Side <- "UNK"#
+  data$Side[which(isEven(data$cabin.last.digit))] <- "port"#
+  data$Side[which(isOdd(data$cabin.last.digit))] <- "starboard"#
+  data$Side <- as.factor(data$Side)#
+  data$cabin.last.digit <- NULL#
+  return (data)#
+}
+train.raw <- featureEngrg(train.raw)
+?revalue()
+featureEngrg <- function(data) {#
+  ## Using Fate ILO Survived because term is shorter and just sounds good#
+  data$Fate <- data$Survived#
+  ## Revaluing Fate factor to ease assessment of confusion matrices later#
+  data$Fate <- revalue(data$Fate, c("1" = "Survived", "0" = "Perished"))#
+  ## Boat.dibs attempts to capture the "women and children first"#
+  ## policy in one feature.  Assuming all females plus males under 15#
+  ## got "dibs' on access to a lifeboat#
+  data$Boat.dibs <- "No"#
+  data$Boat.dibs[which(data$Sex == "female" | data$Age < 15)] <- "Yes"#
+  data$Boat.dibs <- as.factor(data$Boat.dibs)#
+  ## Family consolidates siblings and spouses (SibSp) plus#
+  ## parents and children (Parch) into one feature#
+  data$Family <- data$SibSp + data$Parch#
+  ## Fare.pp attempts to adjust group purchases by size of family#
+  data$Fare.pp <- data$Fare/(data$Family + 1)#
+  ## Giving the traveling class feature a new look#
+  data$Class <- data$Pclass#
+  data$Class <- revalue(data$Class, #
+                        c("1"="First", "2"="Second", "3"="Third"))#
+  ## First character in Cabin number represents the Deck #
+  data$Deck <- substring(data$Cabin, 1, 1)#
+  data$Deck[ which( is.na(data$Deck ))] <- "UNK"#
+  data$Deck <- as.factor(data$Deck)#
+  return (data)#
+}
+train.raw <- featureEngrg(train.raw)
+summary(train.raw$Survived)
+featureEngrg <- function(data) {#
+  ## Using Fate ILO Survived because term is shorter and just sounds good#
+  ## Boat.dibs attempts to capture the "women and children first"#
+  ## policy in one feature.  Assuming all females plus males under 15#
+  ## got "dibs' on access to a lifeboat#
+  data$Boat.dibs <- "No"#
+  data$Boat.dibs[which(data$Sex == "female" | data$Age < 15)] <- "Yes"#
+  data$Boat.dibs <- as.factor(data$Boat.dibs)#
+  ## Family consolidates siblings and spouses (SibSp) plus#
+  ## parents and children (Parch) into one feature#
+  data$Family <- data$SibSp + data$Parch#
+  ## Fare.pp attempts to adjust group purchases by size of family#
+  data$Fare.pp <- data$Fare/(data$Family + 1)#
+  ## Giving the traveling class feature a new look#
+  data$Class <- data$Pclass#
+  data$Class <- revalue(data$Class, #
+                        c("1"="First", "2"="Second", "3"="Third"))#
+  ## First character in Cabin number represents the Deck #
+  data$Deck <- substring(data$Cabin, 1, 1)#
+  data$Deck[ which( is.na(data$Deck ))] <- "UNK"#
+  data$Deck <- as.factor(data$Deck)#
+  ## Odd-numbered cabins were reportedly on the port side of the ship#
+  ## Even-numbered cabins assigned Side="starboard"#
+  data$cabin.last.digit <- str_sub(data$Cabin, -1)#
+  data$Side <- "UNK"#
+  data$Side[which(isEven(data$cabin.last.digit))] <- "port"#
+  data$Side[which(isOdd(data$cabin.last.digit))] <- "starboard"#
+  data$Side <- as.factor(data$Side)#
+  data$cabin.last.digit <- NULL#
+  return (data)#
+}
+train.raw <- featureEngrg(train.raw)
+train.raw$Family<- train.raw$SibSp + train.raw$Parch + 1
+train.raw$Fare<- train.raw$Fare/ (train.raw$Family + 1)
+train.raw$Class<- revalue(data$Pclass, c("1"="First", "2"="Second", "3"="Third"))
+train.raw$Class<- revalue(train.raw$Pclass, c("1"="First", "2"="Second", "3"="Third"))
+train.raw$Class<- factor(data$Pclass, levels=c(1,2,3), Labels =c ("1"="First", "2"="Second", "3"="Third"))
+train.raw$Class<- revalue(train.raw$Pclass, c("1"=="First", "2"=="Second", "3"=="Third"))
+train.raw$survived= factor(train.raw$survived, labels= c (" Survived", "Perished") )
+train.raw$survived= factor(train.raw$survived, levels= 0:1, labels= c (" Survived", "Perished") )
+train.raw$survived= factor(train.raw$survived, levels= c(0:1), labels= c (" Survived", "Perished") )
+Titanic.path <- "/Users/tusharporwal/kaggle_titanic"#
+train.data.file <- "train.csv"#
+test.data.file <- "test.csv"#
+missing.types <- c("NA", "")#
+train.column.types <- c('integer',   # PassengerId#
+                        'factor',    # Survived #
+                        'factor',    # Pclass#
+                        'character', # Name#
+                        'factor',    # Sex#
+                        'numeric',   # Age#
+                        'integer',   # SibSp#
+                        'integer',   # Parch#
+                        'character', # Ticket#
+                        'numeric',   # Fare#
+                        'character', # Cabin#
+                        'factor'     # Embarked#
+)#
+test.column.types <- train.column.types[-2]
+traintest.raw <- readData(Titanic.path, train.data.file, #
+                      train.column.types, missing.types)
+getwd()
+setwd()
+setwd(dir)
+setwd(/Users/tusharporwal)
+setwd(Users/tusharporwal)
+train.raw$survived= factor(train.raw$survived, levels= c(0:1), labels= c (" Survived", "Perished") )
+head(train.raw$survived)
+train.raw$survived
+summar(train.raw)
+summary(train.raw)
+train.raw$Survived
+train.raw$Survived= factor(train.raw$Survived, levels= c(0:1), labels= c (" Survived", "Perished") )
+summary(train.raw)
+train.raw$Pclass= factor(train.raw$SPclass, levels= c(1:3), labels= c (" First", "Second", "Third") )
+summary(train.raw)
+train.raw$Pclass<- factor(train.raw$SPclass, levels= c(1:3), labels= c (" First", "Second", "Third") )
+train.raw$Pclass= factor(train.raw$Pclass, levels= c(1:3), labels= c(" First", "Second", "Third"))
+summary(train.raw)
+train.raw$Deck <- substring(train.raw$Cabin, 1, 1)#
+  train.raw$Deck[ which( is.na(train.raw$Deck ))] <- "UNK"#
+  train.raw$Deck <- as.factor(train.raw$Deck)
+summary(train.raw)
+train.raw$cabin.last.digit <- str_sub(train.raw$Cabin, -1)#
+  train.raw$Side <- "UNK"#
+  train.raw$Side[which(isEven(train.raw$cabin.last.digit))] <- "port"#
+  train.raw$Side[which(isOdd(train.raw$cabin.last.digit))] <- "starboard"#
+  train.raw$Side <- as.factor(train.raw$Side)#
+  train.raw$cabin.last.digit <- NULL
+summary(train.raw)
+summary(train.raw$fare)
+summary(train.raw$Fare)
+train.raw$Boat.dibs <- "No"#
+  train.raw$Boat.dibs[which(train.raw$Sex == "female" | train.raw$Age < 15)] <- "Yes"#
+  train.raw$Boat.dibs <- as.factor(train.raw$Boat.dibs)
+summary(train.raw)
+train.keeps <- c("Survived", "Sex", "Boat.dibs", "Age", "Title", #
+                 "Class", "Deck", "Side", "Fare", #
+                 "Embarked", "Family")
+train.clean<- train.raw[train.keeps]
+train.raw.clean<- train.raw[train.keeps]
+summary(train.keeps)
+train.raw1 <- c("train.raw$Survived", "train.raw$Sex", "train.raw$Boat.dibs", "train.raw$Age", "train.raw$Title", #
++                  "train.raw$Class", "train.raw$Deck", "train.raw$Side", "train.raw$Fare", #
++                  "train.raw$Embarked", "train.raw$Family")
+train.raw1 <- c("train.raw$Survived", "train.raw$Sex", "train.raw$Boat.dibs", "train.raw$Age", "train.raw$Title", "train.raw$Class", "train.raw$Deck", "train.raw$Side", "train.raw$Fare", "train.raw$Embarked", "train.raw$Family")
+train.raw.clean<- train.raw[train.raw1]
+train.raw1 <- c("train.raw$Survived", "train.raw$Sex", "train.raw$Boat.dibs", "train.raw$Age", "train.raw$Title", "train.raw$Class", "train.raw$Deck", "train.raw$Side", "train.raw$Fare", "train.raw$Embarked", "train.raw$Family")
+train.keeps <- c("Survived", "Sex", "Boat.dibs", "Age", "Title", "Pclass", "Deck", "Side", "Fare",  "Embarked", "Family")
+train.raw.clean<- train.raw[train.keeps]
+summary(train.raw.clean)
+train.raw$Sex= factor(train.raw$Sex, levels= c(0:1), labels= c(" Male", "Female"))
+train.keeps <- c("Survived", "Sex", "Boat.dibs", "Age", "Title", "Pclass", "Deck", "Side", "Fare",  "Embarked", "Family")
+train.raw.clean<- train.raw[train.keeps]
+summary(train.raw.clean)
+train.raw$Sex= factor(train.raw$Sex, levels= 0:1, labels= c(" Male", "Female"))
+summary(train.raw)
+summary(train.raw$Sex)
+train.raw$Sex= factor(train.raw$Sex, levels= 0:1, labels= c(" Male", "Female"))
+summary(train.raw$Sex)
+summary(train.raw.clean)
+train.raw$Sex= factor(train.raw$Sex, labels= c(" Male", "Female"))
+summary(train.raw.clean)
+library(caret)
+install.packages("caret")
+library(caret)
+## split training data into train batch and test batch#
+set.seed(23)#
+training.rows <- createDataPartition(train.raw.clean$Survived, #
+                                     p = 0.8, list = FALSE)#
+train.batch <- train.raw.clean[training.rows, ]#
+test.batch <- train.raw.clean[-training.rows, ]
+Titanic.logit.1 <- glm(Survived ~ Sex + Pclass + Age + Family + Embarked + Fare, #
+                       data = train.batch, family=binomial("logit")
+summary(Titanic.logit.1)
+Titanic.logit.1 <- glm(Survived ~ Sex + Pclass + Age + Family + Embarked + Fare, #
+                       data = train.batch, family=binomial("logit")
+## split training data into train batch and test batch#
+set.seed(23)#
+training.rows <- createDataPartition(train.raw.clean$Survived, #
+                                     p = 0.8, list = FALSE)#
+train.batch <- train.raw.clean[training.rows, ]#
+test.batch <- train.raw.clean[-training.rows, ]
+Titanic.logit.1 <- glm(Survived ~ Sex + Pclass + Age + Family + Embarked + Fare, #
+                        train.batch, binomial)
+Titanic.logit.1 <- glm(Survived ~ Sex + Pclass + Age + Family + Embarked + Fare, #
+                       data = train.batch, family=binomial(link="logit")
+summary(Titanic.logit.1)
+Titanic.logit.1 <- glm(Survived ~ Sex + Pclass + Age + Family + Embarked + Fare, #
+                        family=binomial(link="logit"), data = train.batch)
+Titanic.logit.1 <- glm(Survived ~ Sex + Pclass + Age + Family + Embarked + Fare, #
+                        family=binomial("logit"), data = train.batch)
+Titanic.logit.1 <- glm(Survived ~ Sex + Pclass + Age + Family + Embarked + Fare, #
+                       data = train.batch, family=binomial("logit"))
+Titanic.logit.1 = glm(Survived ~ Sex + Pclass + Age + Family + Embarked + Fare, #
+                       data = train.batch, family=binomial("logit"))
+library(rpart)
+library(randomForest)
+install.packages("randomForest")
+library(randomForest)
+library(party)
+it <- randomForest(as.factor(Survived) ~ Pclass + Sex + Age + Fare + Embarked + Title + Family, data=train.batch, importance=TRUE, ntree=2000)
+fit <- randomForest(as.factor(Survived) ~ Pclass + Sex + Age + Fare + Embarked + Title + Family, data=train.batch, importance=TRUE, ntree=2000)
+train.keeps$Survived
+train.raw.clean$Survived
+fit <- randomForest(Survived ~ Pclass + Sex + Age + Fare + Embarked + Title + Family, data=train.batch, importance=TRUE, ntree=2000)
+rf.grid <- data.frame(.mtry = c(2, 3)
+set.seed(35)#
+rf.tune <- train(Fate ~ Sex + Pclass + Age + Family + Embarked, #
+                 data = train.batch,#
+                 method = "rf",#
+                 metric = "ROC",#
+                 tuneGrid = rf.grid,#
+                 trControl = cv.ctrl)
+set.seed(35)#
+rf.tune <- train(Survived ~ Sex + Pclass + Age + Family + Embarked, #
+                 data = train.batch,#
+                 method = "rf",#
+                 metric = "ROC",#
+                 tuneGrid = rf.grid,#
+                 trControl = cv.ctrl)
+rf.grid <- data.frame(.mtry = c(2, 3)
+)
+fit <- rpart(Survived ~ Pclass + Sex + Age + SibSp + Parch + Fare + Embarked + Title + Family, data=train.batch, method="class")
+fit <- rpart(Survived ~ Pclass + Sex + Age+ Fare + Embarked + Title + Family, data=train.batch, method="class")
+summary(fit)
+getwd()
+setwd("/Users/tusharporwal/kaggle_titanic")
+require("RCurl")
+library(RCurl)
+require("RCurl")
+readData <- function(path.name, file.name, column.types, missing.types) {#
+  read.csv( url( paste(path.name, file.name, sep="") ), #
+            colClasses=column.types,#
+            na.strings=missing.types )#
+}
+Titanic.path <- "https://raw.github.com/wehrley/Kaggle_Titanic/master/"#
+train.data.file <- "train.csv"#
+test.data.file <- "test.csv"#
+missing.types <- c("NA", "")#
+train.column.types <- c('integer',   # PassengerId#
+                        'factor',    # Survived #
+                        'factor',    # Pclass#
+                        'character', # Name#
+                        'factor',    # Sex#
+                        'numeric',   # Age#
+                        'integer',   # SibSp#
+                        'integer',   # Parch#
+                        'character', # Ticket#
+                        'numeric',   # Fare#
+                        'character', # Cabin#
+                        'factor'     # Embarked#
+)#
+test.column.types <- train.column.types[-2]     # # no Survived column in test.csv
+train.raw <- readData(Titanic.path, train.data.file, #
+                      train.column.types, missing.types)
+?read.csv
+?readData
+Titanic <- read.csv("/train.csv", missing.types <- c("NA", ""), colClasses= c( 'integer',   # PassengerId#
+                        'factor',    # Survived #
+                        'factor',    # Pclass#
+                        'character', # Name#
+                        'factor',    # Sex#
+                        'numeric',   # Age#
+                        'integer',   # SibSp#
+                        'integer',   # Parch#
+                        'character', # Ticket#
+                        'numeric',   # Fare#
+                        'character', # Cabin#
+                        'factor'     # Embarked#
+)))
